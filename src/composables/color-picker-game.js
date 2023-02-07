@@ -1,23 +1,16 @@
 import { ref } from 'vue';
 
 export const useColorPickerGame = (arrOfColors) => {
+    const colors = arrOfColors;
     let message = ref('Pick a Color...');
 
     const matchColor = (value) => {
-        const randomNumber = Math.floor(Math.random() * 3) + 1;
+        const randomNumber = Math.floor(Math.random() * 4); // Get a random number between 0 and 3 inclusive.
 
-        if (colors[randomNumber] === value) {
-            message.value = `You win... [answer: ${colors[randomNumber]}]`;
-            return;
-          }
-    
-          message.value = `You loose [answer: ${colors[randomNumber]}]`;
-
-        // colors[randomNumber] === value ?
-        //   message.value = `You win... [Right Answer: ${arrOfColors[randomNumber]}]` :
-
-        //   message.value = `You lose... [Right Answer: ${arrOfColors[randomNumber]}]`;
+        colors[randomNumber] === value
+        ? (message.value = `You win... [Right Answer: ${arrOfColors[randomNumber]}]`)
+        : (message.value = `You lose... [Right Answer: ${arrOfColors[randomNumber]}]`);
     };
 
-    return { message, arrOfColors, matchColor };
+    return { message, colors, matchColor };
 }

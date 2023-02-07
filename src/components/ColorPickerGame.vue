@@ -9,7 +9,6 @@
 </template>
 
 <script>
-import { ref, reactive } from "@vue/reactivity";
 import { useColorPickerGame } from '../composables/color-picker-game.js';
 
 export default {
